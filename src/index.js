@@ -1,19 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { render } from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-  
+const rootElement = document.getElementById("root");
+let posts = [
+  { id: 1, likesCount: 12, message: "Helloy" },
+  { id: 2, likesCount: 5, message: "Hi? Arae You?" },
+  { id: 3, likesCount: 0, message: "blabla" },
+  { id: 4, likesCount: 9, message: "WtF" },
+  { id: 5, likesCount: 11, message: "It`s is my first post!" },
+];
+
+render(
+  <BrowserRouter>
+    <App postsProps={posts} />
+    Apptext
+  </BrowserRouter>,
+  rootElement
 );
-
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

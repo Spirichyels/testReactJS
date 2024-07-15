@@ -1,9 +1,19 @@
+
+
+
 .nav {
 	grid-area: n;
 	background-color: navajowhite;
+	padding: 20px;
 }
 
 .item {
+	text-decoration: none;
 	color: white
+}
+
+.active{
+	text-decoration: none;
+	color: red;
 }
 
