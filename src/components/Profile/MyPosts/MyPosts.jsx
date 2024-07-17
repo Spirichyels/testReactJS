@@ -11,7 +11,7 @@ const MyPosts = (props) => {
   //     { id: 5, likesCount: 11, message: "It`s is my first post!" },
   //   ];
 
-  let postsElements = props.postsProps.map((p) => (
+  let postsElements = props.posts.map((p) => (
     <Post iLike={p.likesCount} message={p.message} />
   ));
   return (
