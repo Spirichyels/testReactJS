@@ -1,0 +1,16 @@
+.bar {
+	padding-top: 10pt;
+	text-decoration: none;
+	font-size: 24px;
+	font-weight: 700;
+	color: white;
+}
+
+.siteBarGird {
+	
+	padding-top: 5pt;
+	display: grid; 
+	
+	
+	grid-template-columns: 45pt 45pt 45pt;
+}

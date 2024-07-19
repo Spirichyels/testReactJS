@@ -1,0 +1,13 @@
+.item {
+	margin:0 auto;
+	text-align: center;
+	text-decoration: none;
+	font-size: 24;
+	color: white;
+}
+
+.item img {
+	width: 30pt;
+	height: 30pt;
+	border-radius: 30pt;
+}
