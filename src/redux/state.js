@@ -36,15 +36,18 @@ let store = {
       ],
     },
   },
+  _callSubscriber() {
+    console.log("state change");
+  },
   getState() {
     debugger;
     return this._state;
   },
-  _callSubscriber() {
-    console.log("state change");
+  subscribe(observer) {
+    this._callSubscriber = observer;
   },
-  addPost(/*postMessage*/) {
-    debugger;
+
+  addPost() {
     let newPost = {
       id: 5,
       message: this._state.profilePage.newPostText,
@@ -56,7 +59,27 @@ let store = {
 
     this._callSubscriber(this._state);
   },
-  addMessage(/*postMessage*/) {
+  updateNewPostText(newTextP) {
+    this._state.profilePage.newPostText = newTextP;
+    this._callSubscriber(this._state);
+  },
+  dispatch(action) {
+    if (action.type === "ADD-POST") {
+      let newPost = {
+        id: 5,
+        message: this._state.profilePage.newPostText,
+        likesCount: 0,
+      };
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+      this._state.profilePage.newPostText = action.newTextP;
+      this._callSubscriber(this._state);
+    }
+  },
+
+  addMessage() {
     let newMessage = {
       id: 4,
       message: this._state.messagesPage.newMessageText,
@@ -67,18 +90,9 @@ let store = {
 
     this._callSubscriber(this._state);
   },
-
-  updateNewPostText(newTextP) {
-    this._state.profilePage.newPostText = newTextP;
-    this._callSubscriber(this._state);
-  },
-
   updateNewMessageText(newTextM) {
     this._state.messagesPage.newMessageText = newTextM;
     this._callSubscriber(this._state);
-  },
-  subscribe(observer) {
-    this._callSubscriber = observer;
   },
 };
 
