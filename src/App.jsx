@@ -16,10 +16,12 @@ const App = (props) => {
           path="/profile"
           render={() => (
             <Profile
-              //addPost={props.addPost}
-              //updateNewPostText={props.updateNewPostText}
-              profilePage={props.AppState.profilePage}
-              dispatch={props.dispatch}
+            profilePage={props.AppState.profilePage}
+            dispatch={props.dispatch}
+			
+			//addPost={props.addPost}
+            //updateNewPostText={props.updateNewPostText}
+            
             />
           )}
         />
@@ -27,10 +29,11 @@ const App = (props) => {
           path="/dialogs"
           render={() => (
             <Dialogs
-              addMessage={props.addMessage}
-              updateNewMessageText={props.updateNewMessageText}
               messagesPage={props.AppState.messagesPage}
               newMessageText={props.AppState.messagesPage.newMessageText}
+              dispatch={props.dispatch}
+              //   addMessage={props.addMessage}
+              //   updateNewMessageText={props.updateNewMessageText}
             />
           )}
         />
