@@ -10,7 +10,7 @@ const App = (props) => {
   return (
     <div className="app-wrapper">
       <Header />
-      <Navbar state={props.AppState.sitebar} />
+      <Navbar state={props.AppState.sideBar} />
       <div className="app-wrapper-content">
         <Route
           path="/profile"
@@ -29,9 +29,10 @@ const App = (props) => {
           path="/dialogs"
           render={() => (
             <Dialogs
-              messagesPage={props.AppState.messagesPage}
-              newMessageText={props.AppState.messagesPage.newMessageText}
-              dispatch={props.dispatch}
+              //messagesPage={props.AppState.messagesPage}
+              //newMessageText={props.AppState.messagesPage.newMessageText}
+              //dispatch={props.dispatch}
+			  store = {props.store}
               //   addMessage={props.addMessage}
               //   updateNewMessageText={props.updateNewMessageText}
             />

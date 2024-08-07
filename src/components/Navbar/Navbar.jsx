@@ -1,7 +1,7 @@
 import React from "react";
 import nav from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
-import SiteBar from "./SiteBar/SiteBar";
+import SideBar from "./SideBar/SideBar";
 
 const Navbar = (props) => {
   return (
@@ -48,7 +48,7 @@ const Navbar = (props) => {
         </NavLink>
       </div>
 
-      <SiteBar friends={props.state.friends} />
+      <SideBar friends={props.state.friends} />
     </nav>
   );
 };

@@ -2,43 +2,48 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
-import { addMessageActionCreator, uppdateNewMessagetActionCreator } from "../../redux/state";
+import { sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/state";
 
 const Dialogs = (props) => {
-  let dialogsElements = props.messagesPage.dialogs.map((d) => (
+	
+	let state = props.store.getState().dialogsPage;
+
+	
+
+
+
+  let dialogsElements = state.dialogs.map((d) => (
     <DialogItem name={d.name} id={d.id} />
   ));
 
-  let messagesElements = props.messagesPage.messages.map((m) => (
+  let messagesElements = state.messages.map((m) => (
     <Message message={m.message} id={m.id}></Message>
   ));
+  let newMessageBody = state.newMessageBody;
+  
 
-  let newMessageElement = React.createRef();
-  let addMessage = () => {
-    debugger;
-	props.dispatch(addMessageActionCreator());
-    debugger;
-  };
 
-  let onMessageChange = () => {
-    let text = newMessageElement.current.value;
-    let action = uppdateNewMessagetActionCreator(text);
-	props.dispatch(action)
-  };
+  let onSendMessageClick = () => {
+	props.store.dispatch(sendMessageCreator());
+  }
+
+  let onNewMessageChange = (e) => {
+	let body = e.target.value;
+	props.store.dispatch(updateNewMessageBodyCreator(body));
+  }
 
   return (
     <div className={s.dialog}>
       <div className={s.dialogItems}>{dialogsElements}</div>
       <div className={s.messages}>
         <div>{messagesElements}</div>
-        <div>
-          <textarea
-            onChange={onMessageChange}
-            ref={newMessageElement}
-            value={props.newMessageText}
+        <div><textarea
+		  	placeholder = "Enter your message"
+            onChange={onNewMessageChange}
+            value={newMessageBody}
           />
           <div>
-            <button onClick={addMessage}>Send message</button>
+            <button onClick={onSendMessageClick}>Send</button>
           </div>
         </div>
       </div>

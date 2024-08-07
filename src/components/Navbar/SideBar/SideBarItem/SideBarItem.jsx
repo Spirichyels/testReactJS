@@ -1,7 +1,7 @@
 import React from "react";
-import s from "./SiteBarItem.module.css";
+import s from "./SideBarItem.module.css";
 
-const SiteBar = (props) => {
+const SideBar = (props) => {
   return (
     <div className={s.item}>
       <div>
@@ -15,4 +15,4 @@ const SiteBar = (props) => {
   );
 };
 
-export default SiteBar;
+export default SideBar;
