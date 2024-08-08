@@ -1,21 +1,8 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Posts/Post.jsx";
-import { addPostActionCreator, uppdateNewPostActionCreator } from "../../../redux/state.js";
+import { addPostActionCreator, uppdateNewPostActionCreator } from "../../../redux/profile-reducer.js";
 
-
-// let addPostActionCreator =() => {
-// 	return {
-// 		type: "ADD-POST"
-// 	}
-// }
-
-// let uppdateNewPostActionCreator =(text) => {
-// 	return {
-// 		type: "UPDATE-NEW-POST-TEXT",
-// 		newTextP: text
-// 	}
-// }
 
 
 
@@ -27,6 +14,7 @@ const MyPosts = (props) => {
   let newPostElement = React.createRef();
 
   let addPost = () => {
+	debugger;
     props.dispatch(addPostActionCreator());
   };
 
@@ -34,6 +22,7 @@ const MyPosts = (props) => {
     let text = newPostElement.current.value;
     let action = uppdateNewPostActionCreator(text);
     props.dispatch(action);
+	debugger;
   };
 
   return (

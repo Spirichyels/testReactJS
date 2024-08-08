@@ -3,12 +3,12 @@ import profileReducer from "./profile-reducer";
 import sidebarReducer from "./sidebar-reducer";
 
 
-const ADD_POST = "ADD-POST"
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+// const ADD_POST = "ADD-POST"
+// const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
 
 
-const SEND_MESSAGE = "SEND_MESSAGE"
-const UPDATE_NEW_MESSAGE_BODY = "UPDATE_NEW_MESSAGE_BODY"
+// const SEND_MESSAGE = "SEND_MESSAGE"
+// const UPDATE_NEW_MESSAGE_BODY = "UPDATE_NEW_MESSAGE_BODY"
 
 
 
@@ -75,14 +75,14 @@ let store = {
 
 };
 
-export const  addPostActionCreator =() => ({type: ADD_POST})
-export const uppdateNewPostActionCreator =(text) => 
-	({type: UPDATE_NEW_POST_TEXT,newTextP: text})
+// export const  addPostActionCreator =() => ({type: ADD_POST})
+// export const uppdateNewPostActionCreator =(text) => 
+// 	({type: UPDATE_NEW_POST_TEXT,newTextP: text})
 
 
-export const sendMessageCreator = () =>  ({type: SEND_MESSAGE})
-export const updateNewMessageBodyCreator =(body) => 
-	({type: UPDATE_NEW_MESSAGE_BODY,body: body})
+// export const sendMessageCreator = () =>  ({type: SEND_MESSAGE})
+// export const updateNewMessageBodyCreator =(body) => 
+// 	({type: UPDATE_NEW_MESSAGE_BODY,body: body})
 
 
 
