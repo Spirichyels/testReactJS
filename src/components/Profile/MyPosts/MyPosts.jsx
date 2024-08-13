@@ -8,7 +8,7 @@ import { addPostActionCreator, uppdateNewPostActionCreator } from "../../../redu
 
 const MyPosts = (props) => {
   let postsElements = props.posts.map((p) => (
-    <Post iLike={p.likesCount} message={p.message} />
+    <Post iLike={p.likesCount} key={p.id} message={p.message} />
   ));
 
   let newPostElement = React.createRef();

@@ -4,7 +4,7 @@ import s from "./SideBar.module.css";
 
 const SideBar = (props) => {
   let friendsElements = props.friends.map((sb) => (
-    <SideBarItem id={sb.id} name={sb.name} />
+    <SideBarItem id={sb.id} key={sb.id} name={sb.name} />
   ));
 
   return (

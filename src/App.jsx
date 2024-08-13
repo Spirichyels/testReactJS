@@ -5,6 +5,8 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
+
 
 const App = (props) => {
 debugger;
@@ -12,7 +14,6 @@ debugger;
     <div className="app-wrapper">
       <Header />
       <Navbar 
-	  //state={props.state.sideBar} 
 	  
 	  />
       <div className="app-wrapper-content">
@@ -26,6 +27,12 @@ debugger;
           path="/dialogs"
           render={() => (
             <DialogsContainer/>
+          )}
+        />
+		<Route
+          path="/users"
+          render={() => (
+            <UsersContainer/>
           )}
         />
       </div>

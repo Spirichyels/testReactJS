@@ -6,10 +6,11 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import "./index.css";
-import { Provider } from "./StoreContext";
+import { Provider } from "react-redux";
 
 export let rerenderEntireTree = (state) => {
-debugger;
+window.state = state
+
   ReactDOM.render(
     <BrowserRouter>
 		<Provider store={store}>
@@ -21,6 +22,7 @@ debugger;
 };
 
 rerenderEntireTree(store.getState());
+
 
 store.subscribe(() =>{
 	let state = store.getState();

@@ -1,7 +1,7 @@
 import React from "react";
 import nav from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
-import SideBar from "./SideBar/SideBar";
+import SideBarContainer from "./SideBar/SideBarContainer";
 
 const Navbar = (props) => {
   return (
@@ -48,7 +48,14 @@ const Navbar = (props) => {
         </NavLink>
       </div>
 
-      {/* <SideBar friends={props.state.friends} /> */}
+	  <NavLink
+          to="/users"
+          className={(navData) => (navData.isActive ? nav.active : nav.item)}
+        
+		>
+          Friends
+        </NavLink>
+      <SideBarContainer />
     </nav>
   );
 };
