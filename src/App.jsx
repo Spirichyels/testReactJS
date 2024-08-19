@@ -7,34 +7,15 @@ import Profile from "./components/Profile/Profile";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 
-
-const App = (props) => {
-debugger;
+const App = () => {
   return (
     <div className="app-wrapper">
       <Header />
-      <Navbar 
-	  
-	  />
+      <Navbar />
       <div className="app-wrapper-content">
-        <Route
-          path="/profile"
-          render={() => (
-            <Profile/>
-          )}
-        />
-        <Route
-          path="/dialogs"
-          render={() => (
-            <DialogsContainer/>
-          )}
-        />
-		<Route
-          path="/users"
-          render={() => (
-            <UsersContainer/>
-          )}
-        />
+        <Route path="/profile" render={() => <Profile />} />
+        <Route path="/dialogs" render={() => <DialogsContainer />} />
+        <Route path="/users" render={() => <UsersContainer />} />
       </div>
     </div>
   );
