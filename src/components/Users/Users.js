@@ -1,5 +1,5 @@
 import styles from "./Users.module.css";
-import userPhoto from "../../assets/avatarka.webp";
+import userPhoto from "../../assets/images/avatarka.webp";
 
 let Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
