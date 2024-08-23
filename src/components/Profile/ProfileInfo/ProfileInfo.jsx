@@ -2,6 +2,7 @@ import React from "react";
 import s from "./ProfileInfo.module.css";
 
 const ProfileInfo = (props) => {
+  debugger;
   return (
     <div>
       <div className={s.postImg}>
@@ -10,7 +11,11 @@ const ProfileInfo = (props) => {
           alt=""
         />
       </div>
-      <div className={s.descriptionBlock}>ava + description</div>
+      <div className={s.descriptionBlock}>
+        {" "}
+        <img src={props.profile.photos.large} />
+        ava + description
+      </div>
     </div>
   );
 };

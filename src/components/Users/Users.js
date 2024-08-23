@@ -1,5 +1,6 @@
 import styles from "./Users.module.css";
 import userPhoto from "../../assets/images/avatarka.webp";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 let Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -35,10 +36,12 @@ let Users = (props) => {
           <div key={u.id}>
             <span>
               <div className={styles.ava}>
-                <img
-                  src={u.photos.small != null ? u.photos.small : userPhoto}
-                  alt=""
-                />
+                <NavLink to={"/profile/" + u.id}>
+                  <img
+                    src={u.photos.small != null ? u.photos.small : userPhoto}
+                    alt=""
+                  />
+                </NavLink>
               </div>
               <div>
                 {u.followed ? (

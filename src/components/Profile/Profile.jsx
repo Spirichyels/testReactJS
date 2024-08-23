@@ -3,14 +3,16 @@ import prof from "./Profile.module.css";
 
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import Preloader from "../common/Preloader/Preloader";
 
 const Profile = (props) => {
-	debugger;
+  if (!props.profile) {
+    return <Preloader />;
+  }
   return (
     <div className={prof.content}>
-      <ProfileInfo />
-      <MyPostsContainer store = {props.store}
-      />
+      <ProfileInfo profile={props.profile} />
+      <MyPostsContainer />
     </div>
   );
 };
