@@ -4,18 +4,17 @@ import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import { configureStore } from "@reduxjs/toolkit";
 import usersReducer from "./users-reducer";
+import authReducer from "./auth-reducer";
 
+let reducers = combineReducers({
+  profilePage: profileReducer,
+  dialogsPage: dialogsReducer,
+  sideBar: sidebarReducer,
+  usersPage: usersReducer,
+  auth: authReducer,
+});
 
-let reducers = combineReducers(
-	{
-		profilePage: profileReducer, 
-		dialogsPage: dialogsReducer, 
-		sideBar: sidebarReducer,
-		usersPage: usersReducer,
-	}
-);
-
-let store = configureStore({reducer:reducers});
+let store = configureStore({ reducer: reducers });
 
 window.store = store;
 
