@@ -1,7 +1,7 @@
-.app-wrapper {
+.appWrapper {
 	display: grid;
 	margin: 0 auto;
-	max-width:  800px;
+	width: 800px;
 
 	grid-template-areas: 
 	"h h"
@@ -12,8 +12,7 @@
 	/* grid-gap: 10px; */
 }
 
-.app-wrapper-content {
-	max-width:  800px;
+.appWrapperContent {
 	grid-area: c;
 	background-color:cornflowerblue;
 	

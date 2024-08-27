@@ -9,13 +9,13 @@ import "./index.css";
 import { Provider } from "react-redux";
 
 export let rerenderEntireTree = (state) => {
-window.state = state
+  window.state = state;
 
   ReactDOM.render(
     <BrowserRouter>
-		<Provider store={store}>
-			<App />
-		</Provider>	
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>,
     document.getElementById("root")
   );
@@ -23,8 +23,7 @@ window.state = state
 
 rerenderEntireTree(store.getState());
 
-
-store.subscribe(() =>{
-	let state = store.getState();
-	rerenderEntireTree(state);
-} );
+store.subscribe(() => {
+  let state = store.getState();
+  rerenderEntireTree(state);
+});

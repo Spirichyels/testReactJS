@@ -14,14 +14,13 @@ class ProfileContainer extends React.Component {
     axios
       .get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
       .then((response) => {
+        debugger;
         this.props.setUserProfile(response.data);
       });
   }
 
   render() {
-    debugger;
     return <Profile {...this.props} profile={this.props.profile} />;
-    debugger;
   }
 }
 
