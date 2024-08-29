@@ -1,8 +1,6 @@
 import styles from "./Users.module.css";
 import userPhoto from "../../assets/images/avatarka.webp";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
-//import axios from "axios";
-import { usersAPI } from "../../api/api";
 
 let Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -56,13 +54,7 @@ let Users = (props) => {
                       (id) => id === u.id
                     )}
                     onClick={() => {
-                      props.toggleIsFollowingProgress(true, u.id);
-                      usersAPI.unFollowUsers(u.id).then((data) => {
-                        if (data.resultCode == 0) {
-                          props.unFollow(u.id);
-                        }
-                        props.toggleIsFollowingProgress(false, u.id);
-                      });
+                      props.unFollow(u.id);
                     }}
                   >
                     unFollow
@@ -73,14 +65,8 @@ let Users = (props) => {
                       (id) => id === u.id
                     )}
                     onClick={() => {
-                      props.toggleIsFollowingProgress(true, u.id);
-                      usersAPI.followUsers(u.id).then((data) => {
-                        debugger;
-                        if (data.resultCode == 0) {
-                          props.follow(u.id);
-                        }
-                        props.toggleIsFollowingProgress(false, u.id);
-                      });
+                      debugger;
+                      props.follow(u.id);
                     }}
                   >
                     Follow

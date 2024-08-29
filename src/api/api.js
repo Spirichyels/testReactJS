@@ -23,12 +23,12 @@ export const usersAPI = {
     });
   },
 
-  followUsers(id = 1) {
+  follow(id = 1) {
     return instance.post(`follow/${id}`, {}).then((response) => {
       return response.data;
     });
   },
-  unFollowUsers(id = 1) {
+  unFollow(id = 1) {
     return instance.delete(`follow/${id}`, {}).then((response) => {
       return response.data;
     });

@@ -13,7 +13,7 @@ class HeaderContainer extends React.Component {
       })
       .then((response) => {
         if (response.data.resultCode === 0) {
-          debugger;
+          //debugger;
           let photos = response.data.data.photos;
           if (response.data.photos === undefined) photos = defaultAvatarka;
           let { email, id, login } = response.data.data;
