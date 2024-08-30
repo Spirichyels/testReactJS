@@ -123,4 +123,16 @@ export const unFollow = (userId) => {
   };
 };
 
+// export const getProfile = () => {
+//   usersAPI.getHeaderProfile().then((data) => {
+//     if (data.resultCode === 0) {
+//       //debugger;
+//       let photos = data.data.photos;
+//       if (data.photos === undefined) photos = defaultAvatarka;
+//       let { email, id, login } = data.data;
+//       this.props.setAuthUserData(email, id, login, photos);
+//     }
+//   });
+// };
+
 export default usersReducer;
