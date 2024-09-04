@@ -34,7 +34,7 @@ export const setAuthUserData = (email, id, login, photos) => ({
 
 export const getAuthUserData = () => {
   return (dispatch) => {
-    debugger;
+    // debugger;
     usersAPI.getHeaderProfile().then((data) => {
       if (data.resultCode === 0) {
         //debugger;
