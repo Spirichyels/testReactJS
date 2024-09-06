@@ -8,6 +8,37 @@ const instance = axios.create({
   },
 });
 
+export const profileAPI = {
+  getUserProfile(userId) {
+    return instance.get(`profile/` + userId).then((response) => {
+      return response.data;
+    });
+  },
+  getUserStatus(userId) {
+    //debugger;
+    return instance.get(`profile/status/` + userId).then((response) => {
+      return response.data;
+    });
+  },
+
+  updateUserStatus(status) {
+    debugger;
+    return instance
+      .put(`profile/status`, { status: status })
+      .then((response) => {
+        return response.data;
+      });
+  },
+};
+
+export const authAPI = {
+  getHeaderProfile() {
+    return instance.get(`auth/me/`).then((response) => {
+      return response.data;
+    });
+  },
+};
+
 export const usersAPI = {
   getUsers(currentPage = 1, pageSize = 1) {
     return instance
@@ -18,15 +49,13 @@ export const usersAPI = {
   },
 
   getUserProfile(userId) {
-    return instance.get(`profile/` + userId).then((response) => {
-      return response.data;
-    });
+    console.warn("Obsolete method. Please");
+    return profileAPI.getUserProfile(userId);
   },
 
   getHeaderProfile() {
-    return instance.get(`auth/me/`).then((response) => {
-      return response.data;
-    });
+    console.warn("Obsolete method. Auth");
+    return authAPI.getHeaderProfile();
   },
 
   follow(id = 1) {
