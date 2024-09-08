@@ -18,6 +18,7 @@ class ProfileContainer extends React.Component {
       userId = 2;
     }
     this.props.getUserProfile(userId);
+    //setTimeout(() => {})
     this.props.getUserStatus(userId);
   }
 

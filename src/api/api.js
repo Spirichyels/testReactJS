@@ -15,7 +15,6 @@ export const profileAPI = {
     });
   },
   getUserStatus(userId) {
-    //debugger;
     return instance.get(`profile/status/` + userId).then((response) => {
       return response.data;
     });
@@ -23,11 +22,9 @@ export const profileAPI = {
 
   updateUserStatus(status) {
     debugger;
-    return instance
-      .put(`profile/status`, { status: status })
-      .then((response) => {
-        return response.data;
-      });
+    return instance.put(`status`, { status: status }).then((response) => {
+      return response.data;
+    });
   },
 };
 
