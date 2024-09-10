@@ -14,19 +14,9 @@ const Dialogs = (props) => {
   let messagesElements = state.messages.map((m) => (
     <Message message={m.message} key={m.id} id={m.id}></Message>
   ));
-  //let newMessageBody = state.newMessageBody;
-
-  let onSendMessageClick = () => {
-    props.sendMessage();
-  };
-
-  let onNewMessageChange = (e) => {
-    let body = e.target.value;
-    props.updateNewMessageBody(body);
-  };
 
   let addNewMessage = (values) => {
-    alert(values.newMessageBody);
+    props.sendMessage(values.newMessageBody);
   };
 
   if (!props.isAuth) return <Redirect to={"/login"} />;
