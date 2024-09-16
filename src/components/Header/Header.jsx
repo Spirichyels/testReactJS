@@ -17,7 +17,9 @@ const Header = (props) => {
             <div>
               <img src={props.photos} />
             </div>
-            <div>{props.login}</div>
+            <div>
+              {props.login} - <button onClick={props.logout}>Log out</button>
+            </div>
           </NavLink>
         ) : (
           <NavLink to={"/login"}>Login</NavLink>

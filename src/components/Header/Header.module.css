@@ -1,6 +1,7 @@
 .header {
 	grid-area: h;
 	background-color: green;
+	
 
 }
 .header img {
@@ -12,7 +13,7 @@
 
 .loginBlock {
 	float: right;
-	max-width: 100px; 
+	max-width: 200px; 
     width: 100px;
 
 }

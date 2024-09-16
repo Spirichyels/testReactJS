@@ -29,10 +29,23 @@ export const profileAPI = {
 };
 
 export const authAPI = {
-  getHeaderProfile() {
-    return instance.get(`auth/me/`).then((response) => {
-      return response.data;
-    });
+  me() {
+    return instance.get(`auth/me`);
+    // .then((response) => {
+    //   return response.data;
+    // });
+  },
+  login(email, password, rememberMe = false) {
+    return instance.post(`auth/login`, { email, password, rememberMe });
+    //   .then((response) => {
+    //     return response.data;
+    //   });
+  },
+  logout() {
+    return instance.delete(`auth/login`);
+    // .then((response) => {
+    //   return response.data;
+    // });
   },
 };
 
@@ -48,11 +61,6 @@ export const usersAPI = {
   getUserProfile(userId) {
     console.warn("Obsolete method. Please");
     return profileAPI.getUserProfile(userId);
-  },
-
-  getHeaderProfile() {
-    console.warn("Obsolete method. Auth");
-    return authAPI.getHeaderProfile();
   },
 
   follow(id = 1) {
