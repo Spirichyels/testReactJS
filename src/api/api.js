@@ -14,38 +14,25 @@ export const profileAPI = {
       return response.data;
     });
   },
-  getUserStatus(userId) {
-    return instance.get(`profile/status/` + userId).then((response) => {
-      return response.data;
-    });
+  getStatus(userId) {
+    return instance.get(`profile/status/` + userId);
   },
 
-  updateUserStatus(status) {
+  updateStatus(status) {
     debugger;
-    return instance.put(`status`, { status: status }).then((response) => {
-      return response.data;
-    });
+    return instance.put(`profile/status`, { status: status });
   },
 };
 
 export const authAPI = {
   me() {
     return instance.get(`auth/me`);
-    // .then((response) => {
-    //   return response.data;
-    // });
   },
   login(email, password, rememberMe = false) {
     return instance.post(`auth/login`, { email, password, rememberMe });
-    //   .then((response) => {
-    //     return response.data;
-    //   });
   },
   logout() {
     return instance.delete(`auth/login`);
-    // .then((response) => {
-    //   return response.data;
-    // });
   },
 };
 
@@ -58,18 +45,13 @@ export const usersAPI = {
       });
   },
 
-  getUserProfile(userId) {
-    console.warn("Obsolete method. Please");
-    return profileAPI.getUserProfile(userId);
-  },
-
-  follow(id = 1) {
-    return instance.post(`follow/${id}`, {}).then((response) => {
+  follow(iserId = 1) {
+    return instance.post(`follow/${iserId}`, {}).then((response) => {
       return response.data;
     });
   },
-  unFollow(id = 1) {
-    return instance.delete(`follow/${id}`, {}).then((response) => {
+  unFollow(iserId = 1) {
+    return instance.delete(`follow/${iserId}`, {}).then((response) => {
       return response.data;
     });
   },

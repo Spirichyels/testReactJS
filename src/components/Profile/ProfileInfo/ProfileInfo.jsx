@@ -3,6 +3,7 @@ import s from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 import defaultAvatarka from "../../../assets/images/avatarka.webp";
+import ProfileStatusWIthHooks from "./ProfileStatusWIthHooks";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -26,9 +27,9 @@ const ProfileInfo = (props) => {
           }
         />
         <div></div>
-        <ProfileStatus
+        <ProfileStatusWIthHooks
           status={props.status}
-          updateUserStatus={props.updateUserStatus}
+          updateStatus={props.updateStatus}
         />
         <div></div>
         <div></div>

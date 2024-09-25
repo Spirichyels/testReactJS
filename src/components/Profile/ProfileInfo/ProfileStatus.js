@@ -14,7 +14,7 @@ class ProfileStatus extends React.Component {
   };
 
   diActivateEditMode = () => {
-    //debugger;
+    debugger;
     console.log("this:", this);
     this.setState({
       editMode: false,
