@@ -8,6 +8,10 @@ import App from "./App";
 import "./index.css";
 import { Provider } from "react-redux";
 
+let h1 = document.createElement("h1");
+h1.innerHTML = "Hello";
+document.querySelector("body").appendChild(h1);
+
 export let rerenderEntireTree = (state) => {
   window.state = state;
 
