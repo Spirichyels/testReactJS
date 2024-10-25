@@ -50,7 +50,7 @@ const profileReducer = (state = initialState, action) => {
       };
 
     case SET_STATUS:
-      debugger;
+      //debugger;
       return {
         ...state,
         status: action.status,
