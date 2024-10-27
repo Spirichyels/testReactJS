@@ -86,41 +86,47 @@ export const toggleIsFollowingProgress = (isFetching, userId) => ({
 });
 
 export const requestUsers = (page, pageSize) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(toggleIsFetching(true));
     dispatch(setCurrentPage(page));
 
-    usersAPI.getUsers(page, pageSize).then((data) => {
-      dispatch(setUsers(data.items));
-      dispatch(setUsersTotalCount(data.totalCount));
-      dispatch(toggleIsFetching(false));
-    });
+    let response = await usersAPI.getUsers(page, pageSize);
+    //.then((data) => {
+    dispatch(setUsers(response.data.items));
+    dispatch(setUsersTotalCount(response.data.totalCount));
+    dispatch(toggleIsFetching(false));
+    //});
   };
 };
 
+export const followUnFollowFlow = async (
+  dispatch,
+  userId,
+  apiMethod,
+  actionCreator
+) => {
+  dispatch(toggleIsFollowingProgress(true, userId));
+  let response = await apiMethod(userId);
+
+  if (response.data.resultCode == 0) {
+    dispatch(actionCreator(userId));
+  }
+  dispatch(toggleIsFollowingProgress(false, userId));
+};
+
 export const follow = (userId) => {
-  return (dispatch) => {
-    dispatch(toggleIsFollowingProgress(true, userId));
-    usersAPI.follow(userId).then((data) => {
-      debugger;
-      if (data.resultCode == 0) {
-        dispatch(followSuccess(userId));
-      }
-      dispatch(toggleIsFollowingProgress(false, userId));
-    });
+  return async (dispatch) => {
+    let apiMethod = usersAPI.follow.bind(usersAPI);
+    let actionCreator = followSuccess;
+    followUnFollowFlow(dispatch, userId, apiMethod, actionCreator);
   };
 };
 
 export const unFollow = (userId) => {
-  return (dispatch) => {
-    dispatch(toggleIsFollowingProgress(true, userId));
-    usersAPI.unFollow(userId).then((data) => {
-      debugger;
-      if (data.resultCode == 0) {
-        dispatch(unFollowSuccess(userId));
-      }
-      dispatch(toggleIsFollowingProgress(false, userId));
-    });
+  return async (dispatch) => {
+    let apiMethod = usersAPI.unFollow.bind(usersAPI);
+    let actionCreator = unFollowSuccess;
+    followUnFollowFlow(dispatch, userId, apiMethod, actionCreator);
   };
 };
 

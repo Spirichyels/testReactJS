@@ -100,29 +100,32 @@ export const updateUserStatus = (status) => ({
 
 ///////////////////////////////////////////////////////////////////
 //dispatch GET
-export const getUserProfile = (userId) => (dispatch) => {
-  profileAPI.getUserProfile(userId).then((data) => {
-    //debugger;
-    dispatch(setUserProfile(data));
-  });
+export const getUserProfile = (userId) => async (dispatch) => {
+  const response = await profileAPI.getUserProfile(userId);
+  //.then((data) => {
+  //debugger;
+  dispatch(setUserProfile(response.data));
+  //});
 };
 
-export const getStatus = (userId) => (dispatch) => {
+export const getStatus = (userId) => async (dispatch) => {
   //debugger;
-  profileAPI.getStatus(userId).then((response) => {
-    //debugger;
-    dispatch(setStatus(response.data));
-  });
+  let response = await profileAPI.getStatus(userId);
+  //.then((response) => {
+  //debugger;
+  dispatch(setStatus(response.data));
+  //});
 };
 //dispatch update
 
-export const updateStatus = (status) => (dispatch) => {
-  debugger;
-  profileAPI.updateStatus(status).then((response) => {
-    if (response.data.resultCode === 0) {
-      dispatch(setStatus(status));
-    }
-  });
+export const updateStatus = (status) => async (dispatch) => {
+  //debugger;
+  let response = await profileAPI.updateStatus(status);
+  //.then((response) => {
+  if (response.data.resultCode === 0) {
+    dispatch(setStatus(status));
+  }
+  //});
 };
 
 export default profileReducer;
