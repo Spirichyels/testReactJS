@@ -1,4 +1,5 @@
 import { usersAPI } from "../api/api";
+import { updateObjectInArray } from "../utils/helper/object-helper";
 
 const FOLLOW = "FOLLOWT";
 const UNFOLLOW = "UNFOLLOW";
@@ -22,22 +23,28 @@ const usersReducer = (state = initialState, action) => {
     case FOLLOW:
       return {
         ...state,
-        users: state.users.map((u) => {
-          if (u.id === action.userId) {
-            return { ...u, followed: true };
-          }
-          return u;
+        users: updateObjectInArray(state.users, action.userId, "id", {
+          followed: true,
         }),
+        // users: state.users.map((u) => {
+        //   if (u.id === action.userId) {
+        //     return { ...u, followed: true };
+        //   }
+        //   return u;
+        // }),
       };
     case UNFOLLOW:
       return {
         ...state,
-        users: state.users.map((u) => {
-          if (u.id === action.userId) {
-            return { ...u, followed: false };
-          }
-          return u;
+        users: updateObjectInArray(state.users, action.userId, "id", {
+          followed: false,
         }),
+        // users: state.users.map((u) => {
+        //   if (u.id === action.userId) {
+        //     return { ...u, followed: false };
+        //   }
+        //   return u;
+        // }),
       };
     case SET_USERS: {
       return { ...state, users: action.users };
@@ -116,17 +123,23 @@ export const followUnFollowFlow = async (
 
 export const follow = (userId) => {
   return async (dispatch) => {
-    let apiMethod = usersAPI.follow.bind(usersAPI);
-    let actionCreator = followSuccess;
-    followUnFollowFlow(dispatch, userId, apiMethod, actionCreator);
+    followUnFollowFlow(
+      dispatch,
+      userId,
+      usersAPI.follow.bind(usersAPI),
+      followSuccess
+    );
   };
 };
 
 export const unFollow = (userId) => {
   return async (dispatch) => {
-    let apiMethod = usersAPI.unFollow.bind(usersAPI);
-    let actionCreator = unFollowSuccess;
-    followUnFollowFlow(dispatch, userId, apiMethod, actionCreator);
+    followUnFollowFlow(
+      dispatch,
+      userId,
+      usersAPI.unFollow.bind(usersAPI),
+      unFollowSuccess
+    );
   };
 };
 
