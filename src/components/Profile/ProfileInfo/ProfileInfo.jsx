@@ -1,53 +1,41 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
-import ProfileStatus from "./ProfileStatus";
+
 import defaultAvatarka from "../../../assets/images/avatarka.webp";
 import ProfileStatusWIthHooks from "./ProfileStatusWIthHooks";
 
-const ProfileInfo = (props) => {
-  if (!props.profile) {
+const ProfileInfo = ({ profile, status, updateStatus }) => {
+  if (!profile) {
     return <Preloader />;
   }
   return (
     <div>
-      <div className={s.postImg}>
-        {/* <img
-          src="https://vsegda-pomnim.com/uploads/posts/2022-04/1649336918_29-vsegda-pomnim-com-p-krasivie-plyazhi-mira-foto-35.jpg"
-          alt=""
-        /> */}
-      </div>
+      <div className={s.postImg}></div>
       <div className={s.descriptionBlock}>
         {" "}
         <img
-          src={
-            !props.profile.photos.large
-              ? defaultAvatarka
-              : props.profile.photos.large
-          }
+          src={!profile.photos.large ? defaultAvatarka : profile.photos.large}
         />
         <div></div>
-        <ProfileStatusWIthHooks
-          status={props.status}
-          updateStatus={props.updateStatus}
-        />
+        <ProfileStatusWIthHooks status={status} updateStatus={updateStatus} />
         <div></div>
         <div></div>
       </div>
       <div className={s.descriptionBlock}>
-        <div>{props.profile.fullName}</div>
-        <div>{props.profile.lookingForAJobDescription}</div>
-        <div>{props.profile.aboutMe}</div>
+        <div>{profile.fullName}</div>
+        <div>{profile.lookingForAJobDescription}</div>
+        <div>{profile.aboutMe}</div>
       </div>
       <div className={s.descriptionBlock}>
-        <div>{props.profile.contacts.facebook}</div>
-        <div>{props.profile.contacts.website}</div>
-        <div>{props.profile.contacts.vk}</div>
-        <div>{props.profile.contacts.twitter}</div>
-        <div>{props.profile.contacts.youtube}</div>
-        <div>{props.profile.contacts.instagramm}</div>
-        <div>{props.profile.contacts.github}</div>
-        <div>{props.profile.contacts.mainLink}</div>
+        <div>{profile.contacts.facebook}</div>
+        <div>{profile.contacts.website}</div>
+        <div>{profile.contacts.vk}</div>
+        <div>{profile.contacts.twitter}</div>
+        <div>{profile.contacts.youtube}</div>
+        <div>{profile.contacts.instagramm}</div>
+        <div>{profile.contacts.github}</div>
+        <div>{profile.contacts.mainLink}</div>
       </div>
     </div>
   );

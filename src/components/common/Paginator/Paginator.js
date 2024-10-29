@@ -1,9 +1,7 @@
-import styles from "./Users.module.css";
-import userPhoto from "../../assets/images/avatarka.webp";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import styles from "./Paginator.module.css";
 
-let Paginator = (props) => {
-  let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+let Paginator = ({ totalUsersCount, pageSize, onPageChanged, currentPage }) => {
+  let pagesCount = Math.ceil(totalUsersCount / pageSize);
 
   let pages = [];
   let x;
@@ -19,10 +17,10 @@ let Paginator = (props) => {
           <span
             key={p.id}
             className={(
-              props.currentPage === p.count && styles.selectedPage
+              currentPage === p.count && styles.selectedPage
             ).toString()}
             onClick={(e) => {
-              props.onPageChanged(p.count);
+              onPageChanged(p.count);
             }}
           >
             {p.count <= 28
