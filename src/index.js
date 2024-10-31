@@ -7,11 +7,13 @@ import "./index.css";
 
 import SamuraiJsApp from "./App";
 
-export let rerenderEntireTree = (state) => {
-  window.state = state;
+ReactDOM.render(<SamuraiJsApp />, document.getElementById("root"));
 
-  ReactDOM.render(<SamuraiJsApp />, document.getElementById("root"));
-};
+// export let rerenderEntireTree = (state) => {
+//   window.state = state;
+
+//   ReactDOM.render(<SamuraiJsApp />, document.getElementById("root"));
+// };
 
 // rerenderEntireTree(store.getState());
 
