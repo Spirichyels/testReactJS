@@ -1,4 +1,4 @@
-import Paginator from "../common/Paginator/Paginator";
+import Paginator from "../common/Paginator/Paginator.Old";
 import User from "./User";
 
 let Users = ({

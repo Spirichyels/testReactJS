@@ -32,4 +32,23 @@ describe("ProfileStatus component", () => {
     let span = root.findByType("span");
     expect(span.children[0]).toBe("Ваш статус =");
   });
+
+  test("input edit mode insted of span", () => {
+    const component = create(<ProfileStatus status="blabla" />);
+    const root = component.root;
+    let span = root.findByType("span");
+    span.props.onDoubleClick();
+    let input = root.findByType("input");
+    expect(input.props.value).toBe("blabla");
+  });
+
+  test("input edit mode insted of span", () => {
+    const mockCallback = jest.fn();
+    const component = create(
+      <ProfileStatus status="blabla" updateUserStatus={mockCallback} />
+    );
+    const instance = component.getInstance();
+    instance.deactivateEditMode();
+    expect(mockCallback.mock.calls.length).toBe(1);
+  });
 });
