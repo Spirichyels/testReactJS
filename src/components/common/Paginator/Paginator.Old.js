@@ -1,6 +1,11 @@
 import styles from "./Paginator.module.css";
 
-let Paginator = ({ totalUsersCount, pageSize, onPageChanged, currentPage }) => {
+let PaginatorOld = ({
+  totalUsersCount,
+  pageSize,
+  onPageChanged,
+  currentPage,
+}) => {
   let pagesCount = Math.ceil(totalUsersCount / pageSize);
 
   let pages = [];
@@ -35,4 +40,4 @@ let Paginator = ({ totalUsersCount, pageSize, onPageChanged, currentPage }) => {
   );
 };
 
-export default Paginator;
+export default PaginatorOld;

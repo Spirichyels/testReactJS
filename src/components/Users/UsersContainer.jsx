@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 
 import Users from "./Users";
 import {
-  setCurrentPage as setCurrentPage,
-  toggleIsFollowingProgress as toggleIsFollowingProgress,
+  setCurrentPage,
+  toggleIsFollowingProgress,
   requestUsers,
   follow,
   unFollow,

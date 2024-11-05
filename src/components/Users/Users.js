@@ -1,4 +1,4 @@
-import Paginator from "../common/Paginator/Paginator.Old";
+import Paginator from "../common/Paginator/Paginator";
 import User from "./User";
 
 let Users = ({
@@ -14,9 +14,10 @@ let Users = ({
       <div>
         <Paginator
           currentPage={currentPage}
-          totalUsersCount={totalUsersCount}
+          totalItemsCount={totalUsersCount}
           pageSize={pageSize}
           onPageChanged={onPageChanged}
+          portionSize={10}
         />
       </div>
       <div>
