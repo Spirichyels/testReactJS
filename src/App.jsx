@@ -17,18 +17,18 @@ import LoginPage from "./components/Login/Login";
 import { initializeApp } from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import store from "./redux/redux-store";
 
 //import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
+//import ProfileContainer from "./components/Profile/ProfileContainer";
 import { withSuspense } from "./components/hoc/withSuspense";
 
-// const ProfileContainer = React.lazy(() =>
-//   import("./components/Profile/ProfileContainer")
-// );
+const ProfileContainer = React.lazy(() =>
+  import("./components/Profile/ProfileContainer")
+);
 const DialogsContainer = React.lazy(() =>
   import("./components/Dialogs/DialogsContainer")
 );
@@ -69,11 +69,11 @@ let AppContainer = compose(
 
 const SamuraiJsApp = (props) => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
