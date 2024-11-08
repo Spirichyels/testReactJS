@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/testReactJS/static/css/main.e826f526.css",
+    "main.css": "/testReactJS/static/css/main.b0324816.css",
     "main.js": "/testReactJS/static/js/main.1c939f3d.js",
     "static/css/244.211f9005.chunk.css": "/testReactJS/static/css/244.211f9005.chunk.css",
     "static/js/244.9b9cdbcb.chunk.js": "/testReactJS/static/js/244.9b9cdbcb.chunk.js",
@@ -10,7 +10,7 @@
     "static/media/logo.png": "/testReactJS/static/media/logo.84bfcd860b8f7b521390.png",
     "static/media/loading.svg": "/testReactJS/static/media/loading.1d8958e3da5062737f71644b6b2c76d1.svg",
     "index.html": "/testReactJS/index.html",
-    "main.e826f526.css.map": "/testReactJS/static/css/main.e826f526.css.map",
+    "main.b0324816.css.map": "/testReactJS/static/css/main.b0324816.css.map",
     "main.1c939f3d.js.map": "/testReactJS/static/js/main.1c939f3d.js.map",
     "244.211f9005.chunk.css.map": "/testReactJS/static/css/244.211f9005.chunk.css.map",
     "244.9b9cdbcb.chunk.js.map": "/testReactJS/static/js/244.9b9cdbcb.chunk.js.map",
@@ -18,7 +18,7 @@
     "934.dc185f52.chunk.js.map": "/testReactJS/static/js/934.dc185f52.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e826f526.css",
+    "static/css/main.b0324816.css",
     "static/js/main.1c939f3d.js"
   ]
 }
