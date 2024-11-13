@@ -5,10 +5,17 @@ import Preloader from "../../common/Preloader/Preloader";
 import defaultAvatarka from "../../../assets/images/avatarka.webp";
 import ProfileStatusWIthHooks from "./ProfileStatusWIthHooks";
 
-const ProfileInfo = ({ profile, status, updateStatus }) => {
+const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
   if (!profile) {
     return <Preloader />;
   }
+
+  const mainPhotoSelectedOn = (e) => {
+    if (e.target.files.length) {
+      savePhoto(e.target.files[0]);
+    }
+  };
+
   return (
     <div>
       <div className={s.postImg}></div>
@@ -17,7 +24,13 @@ const ProfileInfo = ({ profile, status, updateStatus }) => {
         <img
           src={!profile.photos.large ? defaultAvatarka : profile.photos.large}
         />
-        <div></div>
+        <div>
+          {isOwner ? (
+            <></>
+          ) : (
+            <input type="file" onChange={mainPhotoSelectedOn} />
+          )}
+        </div>
         <ProfileStatusWIthHooks status={status} updateStatus={updateStatus} />
         <div></div>
         <div></div>
