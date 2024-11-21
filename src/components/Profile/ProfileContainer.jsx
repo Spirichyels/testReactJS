@@ -34,7 +34,7 @@ class ProfileContainer extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     //debugger;
-    if (this.props.match.params.userId != prevProps.match.params.userId) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
       this.refreshProfile();
     }
   }
@@ -49,7 +49,7 @@ class ProfileContainer extends React.Component {
         status={this.props.status}
         updateStatus={this.props.updateStatus}
         savePhoto={this.props.savePhoto}
-        //saveProfile={this.props.saveProfile}
+        saveProfile={this.props.saveProfile}
       />
     );
   }

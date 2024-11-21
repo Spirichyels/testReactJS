@@ -6,17 +6,17 @@ import {
 } from "../../../common/FormsControls/FormsControls";
 import { reduxForm } from "redux-form";
 
-const ProfileDataForm = ({ onSubmit, profile }) => {
+const ProfileDataForm = ({ handleSubmit, profile }) => {
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}>
       <div>
-        <button onSubmit={onSubmit}>save</button>
+        <button>save</button>
       </div>
       <b>Full name</b>:{createField("Full Name", "fullname", [], Input)}
-      <div>
+      {/* <div>
         <b>Looking for a job</b>:
         {createField("", "lookingForAJob", [], Input, { type: "checkbox" })}
-      </div>
+      </div> */}
       <div>
         <b>My professional skills</b>: {profile.lookingForAJobDescription}
         {createField(
