@@ -4,9 +4,16 @@ import Preloader from "../../common/Preloader/Preloader";
 
 import defaultAvatarka from "../../../assets/images/avatarka.webp";
 import ProfileStatusWIthHooks from "./ProfileStatusWIthHooks";
-import ProfileDataForm from "./ProfileData/ProfileDataForm";
+import ProfileDataFormReduxForm from "./ProfileData/ProfileDataForm";
 
-const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
+const ProfileInfo = ({
+  profile,
+  status,
+  updateStatus,
+  isOwner,
+  savePhoto,
+  saveProfile,
+}) => {
   let [editMode, setEditMode] = useState(false);
 
   if (!profile) {
@@ -17,6 +24,11 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
     if (e.target.files.length) {
       savePhoto(e.target.files[0]);
     }
+  };
+
+  const onSubmit = (formData) => {
+    saveProfile(formData);
+    console.log(formData);
   };
 
   return (
@@ -40,17 +52,13 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
         <div className={s.descriptionBlock}>
           <div>
             <div>
-              <b>Full name</b>: {profile.fullName}
-            </div>
-
-            <div>
               <ProfileStatusWIthHooks
                 status={status}
                 updateStatus={updateStatus}
               />
             </div>
             {editMode ? (
-              <ProfileDataForm profile={profile} />
+              <ProfileDataFormReduxForm profile={profile} onSubmit={onSubmit} />
             ) : (
               <ProfileData
                 goToEditMode={() => {
@@ -72,7 +80,11 @@ const ProfileData = ({ profile, isOwner, goToEditMode }) => {
     <div>
       {isOwner ? <></> : <button onClick={goToEditMode}>edit</button>}
       <div>
-        <b>Looking for a job</b>:{" "}
+        <b>Full name</b>: {profile.fullName}
+      </div>
+
+      <div>
+        <b>2Looking for a job</b>:{" "}
         {profile.lookingForAJobDescription ? "yes" : "no"}
       </div>
       {profile.lookingForAJobDescription && (

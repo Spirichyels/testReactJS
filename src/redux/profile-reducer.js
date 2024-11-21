@@ -116,6 +116,7 @@ export const getUserProfile = (userId) => async (dispatch) => {
   const response = await profileAPI.getUserProfile(userId);
   //.then((data) => {
   //debugger;
+  console.log(response.data);
   dispatch(setUserProfile(response.data));
   //});
 };
@@ -146,6 +147,15 @@ export const savePhoto = (file) => async (dispatch) => {
   //.then((response) => {
   if (response.data.resultCode === 0) {
     dispatch(savePhotoSuccess(response.data.data.photos));
+  }
+  //});
+};
+
+export const saveProfile = (profile) => async (dispatch) => {
+  debugger;
+  let response = await profileAPI.saveProfile(profile);
+  //.then((response) => {
+  if (response.data.resultCode === 0) {
   }
   //});
 };

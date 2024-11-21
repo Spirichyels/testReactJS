@@ -32,6 +32,10 @@ export const profileAPI = {
       },
     });
   },
+  saveProfile(profile) {
+    console.log("profile :", profile);
+    return instance.put(`profile`, profile);
+  },
 };
 
 export const authAPI = {
