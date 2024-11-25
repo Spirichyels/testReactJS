@@ -4,7 +4,7 @@ import Preloader from "../../common/Preloader/Preloader";
 
 import defaultAvatarka from "../../../assets/images/avatarka.webp";
 import ProfileStatusWIthHooks from "./ProfileStatusWIthHooks";
-import ProfileDataFormReduxForm from "./ProfileData/ProfileDataForm";
+import ProfileDataFormFromRedux from "./ProfileData/ProfileDataForm";
 
 const ProfileInfo = ({
   profile,
@@ -27,8 +27,9 @@ const ProfileInfo = ({
   };
 
   const onSubmit = (formData) => {
-    debugger;
+    //debugger;
     saveProfile(formData);
+    setEditMode(false);
   };
 
   return (
@@ -58,7 +59,11 @@ const ProfileInfo = ({
               />
             </div>
             {editMode ? (
-              <ProfileDataFormReduxForm profile={profile} onSubmit={onSubmit} />
+              <ProfileDataFormFromRedux
+                initialValues={profile}
+                profile={profile}
+                onSubmit={onSubmit}
+              />
             ) : (
               <ProfileData
                 goToEditMode={() => {

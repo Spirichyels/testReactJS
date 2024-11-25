@@ -1,4 +1,6 @@
 import React from "react";
+import s from "../ProfileInfo.module.css";
+
 import {
   createField,
   Input,
@@ -6,47 +8,57 @@ import {
 } from "../../../common/FormsControls/FormsControls";
 import { reduxForm } from "redux-form";
 
-const ProfileDataForm = ({ handleSubmit, profile }) => {
+const ProfileDataForm = ({ profile, handleSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <button>save</button>
       </div>
-      <b>Full name</b>:{createField("Full Name", "fullname", [], Input)}
-      {/* <div>
-        <b>Looking for a job</b>:
-        {createField("", "lookingForAJob", [], Input, { type: "checkbox" })}
-      </div> */}
       <div>
-        <b>My professional skills</b>: {profile.lookingForAJobDescription}
+        <b>About me</b>:{createField("About me", "AboutMe", [], Textarea)}
+      </div>
+      <div>
+        <b>Contacts</b>:
+        {Object.keys(profile.contacts).map((key) => {
+          return (
+            <div>
+              <b>
+                {key}:{createField(key, "contacts." + key, [], Input)}
+              </b>
+            </div>
+          );
+        })}
+      </div>
+      <div>
+        <b>Looking for a job</b>:
+        {createField("", "LookingForAJob", [], Input, { type: "checkbox" })}
+      </div>
+      <div>
+        <b>My professional skills</b>:
         {createField(
           "My professional skills",
-          "lokingForAJobDescription",
+          "LookingForAJobDescription",
           [],
           Textarea
         )}
       </div>
       <div>
-        <b>About me</b>:{createField("About me", "AboutMe", [], Textarea)}
+        <b>Full name</b>:{createField("Full Name", "Fullname", [], Input)}
       </div>
-      {/* <div>
-        <b>Contacts</b>:
-        {Object.keys(profile.contacts).map((key) => {
-          return (
-            <Contact
-              key={key}
-              contactTitle={key}
-              contactValue={profile.contacts[key]}
-            />
-          );
-        })}
-      </div> */}
     </form>
   );
 };
 
-const ProfileDataFormReduxForm = reduxForm({
+const Contact = ({ contactTitle, contactValue }) => {
+  return (
+    <div className={s.contact}>
+      <b>{contactTitle}</b>:{contactValue}
+    </div>
+  );
+};
+const ProfileDataFormFromRedux = reduxForm({
   form: "edit-profile",
+  destroyOnUnmount: false,
 })(ProfileDataForm);
 
-export default ProfileDataFormReduxForm;
+export default ProfileDataFormFromRedux;

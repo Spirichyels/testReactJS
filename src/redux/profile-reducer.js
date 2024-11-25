@@ -146,12 +146,13 @@ export const savePhoto = (file) => async (dispatch) => {
   }
 };
 
-export const saveProfile = (profile) => async (dispatch) => {
-  debugger;
+export const saveProfile = (profile) => async (dispatch, getState) => {
+  //debugger;
+  const userId = getState().auth.userId;
   let response = await profileAPI.saveProfile(profile);
-
+  console.log(response);
   if (response.data.resultCode === 0) {
-    //dispatch(setUserProfile(response.data));
+    dispatch(getUserProfile(userId));
   }
 };
 

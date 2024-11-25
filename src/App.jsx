@@ -36,11 +36,13 @@ const DialogsContainer = React.lazy(() =>
 class App extends Component {
   componentDidMount() {
     this.props.initializeApp();
+    console.log("App initial");
   }
 
   render() {
     if (!this.props.initialized) return <Preloader></Preloader>;
 
+    console.log("App render");
     return (
       <div className="app-wrapper">
         <HeaderContainer />
