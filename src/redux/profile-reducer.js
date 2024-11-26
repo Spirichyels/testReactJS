@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form";
 import { profileAPI } from "../api/api";
 
 const ADD_POST = "ADD-POST";
@@ -18,6 +19,7 @@ let initialState = {
   ],
   newPostText: "it-camasutra",
   profile: null,
+  editProfile: false,
   status: "",
 };
 
@@ -153,6 +155,17 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
   console.log(response);
   if (response.data.resultCode === 0) {
     dispatch(getUserProfile(userId));
+    //editProfile = false;
+  } else {
+    //dispatch(stopSubmit("edit-profile", { _error: response.data.messages[0] }));
+
+    dispatch();
+
+    //   stopSubmit("edit-profile", {
+    //     contacts: { facebook: response.data.messages[0] },
+    //     //надо распарсить строку
+    //   })
+    //return Promise.reject("error2");
   }
 };
 

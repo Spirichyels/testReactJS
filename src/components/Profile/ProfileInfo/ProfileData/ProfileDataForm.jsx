@@ -1,5 +1,6 @@
 import React from "react";
-import s from "../ProfileInfo.module.css";
+
+import styles from "../../../common/FormsControls/FormsControls.module.css";
 
 import {
   createField,
@@ -8,20 +9,23 @@ import {
 } from "../../../common/FormsControls/FormsControls";
 import { reduxForm } from "redux-form";
 
-const ProfileDataForm = ({ profile, handleSubmit }) => {
+const ProfileDataForm = ({ profile, handleSubmit, error }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <button>save</button>
       </div>
       <div>
-        <b>About me</b>:{createField("About me", "AboutMe", [], Textarea)}
+        {error && <div className={styles.formControlSummaryError}>{error}</div>}
+      </div>
+      <div>
+        <b>About me</b>:{createField("About me", "aboutMe", [], Textarea)}
       </div>
       <div>
         <b>Contacts</b>:
         {Object.keys(profile.contacts).map((key) => {
           return (
-            <div>
+            <div key={key}>
               <b>
                 {key}:{createField(key, "contacts." + key, [], Input)}
               </b>
@@ -31,31 +35,24 @@ const ProfileDataForm = ({ profile, handleSubmit }) => {
       </div>
       <div>
         <b>Looking for a job</b>:
-        {createField("", "LookingForAJob", [], Input, { type: "checkbox" })}
+        {createField("", "lookingForAJob", [], Input, { type: "checkbox" })}
       </div>
       <div>
         <b>My professional skills</b>:
         {createField(
           "My professional skills",
-          "LookingForAJobDescription",
+          "lookingForAJobDescription",
           [],
           Textarea
         )}
       </div>
       <div>
-        <b>Full name</b>:{createField("Full Name", "Fullname", [], Input)}
+        <b>Full name</b>:{createField("Full Name", "fullName", [], Input)}
       </div>
     </form>
   );
 };
 
-const Contact = ({ contactTitle, contactValue }) => {
-  return (
-    <div className={s.contact}>
-      <b>{contactTitle}</b>:{contactValue}
-    </div>
-  );
-};
 const ProfileDataFormFromRedux = reduxForm({
   form: "edit-profile",
   destroyOnUnmount: false,

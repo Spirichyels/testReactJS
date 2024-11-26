@@ -13,6 +13,7 @@ const ProfileInfo = ({
   isOwner,
   savePhoto,
   saveProfile,
+  editProfile,
 }) => {
   let [editMode, setEditMode] = useState(false);
 
@@ -28,8 +29,7 @@ const ProfileInfo = ({
 
   const onSubmit = (formData) => {
     //debugger;
-    saveProfile(formData);
-    setEditMode(false);
+    saveProfile(formData).then(() => {});
   };
 
   return (
