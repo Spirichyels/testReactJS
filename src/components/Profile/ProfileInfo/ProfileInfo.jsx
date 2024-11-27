@@ -14,6 +14,7 @@ const ProfileInfo = ({
   savePhoto,
   saveProfile,
   editProfile,
+  editProfileSucces,
 }) => {
   let [editMode, setEditMode] = useState(false);
 
@@ -28,10 +29,12 @@ const ProfileInfo = ({
   };
 
   const onSubmit = (formData) => {
-    //debugger;
+    debugger;
     saveProfile(formData).then(() => {});
-  };
 
+    editProfileSucces(true);
+  };
+  debugger;
   return (
     <div>
       <div className={s.postImg}></div>
@@ -58,7 +61,7 @@ const ProfileInfo = ({
                 updateStatus={updateStatus}
               />
             </div>
-            {editMode ? (
+            {editProfile ? (
               <ProfileDataFormFromRedux
                 initialValues={profile}
                 profile={profile}
@@ -66,9 +69,10 @@ const ProfileInfo = ({
               />
             ) : (
               <ProfileData
-                goToEditMode={() => {
-                  setEditMode(true);
-                }}
+                // goToEditMode={() => {
+                //   setEditMode(true);
+                // }}
+                editProfileSucces={editProfileSucces}
                 profile={profile}
                 isOwner={isOwner}
               />
@@ -80,10 +84,14 @@ const ProfileInfo = ({
   );
 };
 
-const ProfileData = ({ profile, isOwner, goToEditMode }) => {
+const ProfileData = ({ profile, isOwner, editProfileSucces }) => {
   return (
     <div>
-      {isOwner ? <></> : <button onClick={goToEditMode}>edit</button>}
+      {isOwner ? (
+        <></>
+      ) : (
+        <button onClick={editProfileSucces(true)}>edit</button>
+      )}
       <div>
         <b>Full name</b>: {profile.fullName}
       </div>

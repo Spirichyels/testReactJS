@@ -8,6 +8,7 @@ const SET_STATUS = "SET_STATUS";
 const UPDATE_USER_STATUS = "UPDATE_USER_STATUS";
 const DELETE_POST = "DELETE_POST";
 const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
+const EDIT_PROFILE_SUCCESS = " EDIT_PROFILE_SUCCESS";
 
 let initialState = {
   posts: [
@@ -69,6 +70,12 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         status: action.status,
       };
+    case EDIT_PROFILE_SUCCESS:
+      return {
+        ...state,
+        editProfile: action.value,
+      };
+
     default:
       return state;
   }
@@ -90,6 +97,7 @@ export const setStatus = (status) => ({
   status,
 });
 
+//delete save
 export const deletePost = (postId) => ({
   type: DELETE_POST,
   postId,
@@ -98,6 +106,12 @@ export const deletePost = (postId) => ({
 export const savePhotoSuccess = (photos) => ({
   type: SAVE_PHOTO_SUCCESS,
   photos,
+});
+
+//EDIT MODE
+export const editProfileSucces = (editProfile) => ({
+  type: EDIT_PROFILE_SUCCESS,
+  editProfile,
 });
 
 ///GET
@@ -155,18 +169,40 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
   console.log(response);
   if (response.data.resultCode === 0) {
     dispatch(getUserProfile(userId));
-    //editProfile = false;
+    editProfileSucces(false);
   } else {
     //dispatch(stopSubmit("edit-profile", { _error: response.data.messages[0] }));
 
-    dispatch();
-
-    //   stopSubmit("edit-profile", {
-    //     contacts: { facebook: response.data.messages[0] },
-    //     //надо распарсить строку
-    //   })
-    //return Promise.reject("error2");
+    dispatch(
+      stopSubmit("edit-profile", {
+        contacts: { facebook: response.data.messages[0] },
+      })
+    );
+    //editProfile(true);
   }
 };
 
 export default profileReducer;
+
+// const getErrorsFromMessages = (messages) => {
+// 	let errors = Object.keys(messages).reduce((acc, key) => {
+// 	  let errorMessage = messages[key].split("->");
+// 	  errorMessage = errorMessage[1]
+// 		.slice(0, errorMessage[1].length - 1)
+// 		.toLowerCase();
+// 	  return { ...acc, [errorMessage]: messages[key] };
+// 	}, {});
+
+// 	return errors;
+//   };
+
+//   export const saveChangedProfile = (formData) => async (dispatch) => {
+// 	let data = await profileAPI.saveChangedProfile(formData);
+// 	if (data.resultCode === 0) {
+// 	  dispatch(getUserProfile(formData.userId))
+// 	} else {
+// 	  dispatch(stopSubmit(<имя формы>, { contacts: getErrorsFromMessages(data.messages)}));
+// 	}
+//   };
+
+//   *для тех кто не

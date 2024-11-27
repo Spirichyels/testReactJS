@@ -10,6 +10,7 @@ import {
 import { reduxForm } from "redux-form";
 
 const ProfileDataForm = ({ profile, handleSubmit, error }) => {
+  debugger;
   return (
     <form onSubmit={handleSubmit}>
       <div>
