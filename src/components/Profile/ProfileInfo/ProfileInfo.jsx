@@ -14,13 +14,18 @@ const ProfileInfo = ({
   savePhoto,
   saveProfile,
   editProfile,
-  editProfileSucces,
 }) => {
   let [editMode, setEditMode] = useState(false);
 
   if (!profile) {
     return <Preloader />;
   }
+
+  //   const test = () => {
+  //     let x = !editMode;
+  //     setEditMode(x);
+  //     console.log(x);
+  //   };
 
   const mainPhotoSelectedOn = (e) => {
     if (e.target.files.length) {
@@ -30,11 +35,11 @@ const ProfileInfo = ({
 
   const onSubmit = (formData) => {
     debugger;
-    saveProfile(formData).then(() => {});
-
-    editProfileSucces(true);
+    saveProfile(formData).then(() => {
+      if (saveProfile) setEditMode(false);
+    });
   };
-  debugger;
+
   return (
     <div>
       <div className={s.postImg}></div>
@@ -61,7 +66,7 @@ const ProfileInfo = ({
                 updateStatus={updateStatus}
               />
             </div>
-            {editProfile ? (
+            {editMode ? (
               <ProfileDataFormFromRedux
                 initialValues={profile}
                 profile={profile}
@@ -69,10 +74,9 @@ const ProfileInfo = ({
               />
             ) : (
               <ProfileData
-                // goToEditMode={() => {
-                //   setEditMode(true);
-                // }}
-                editProfileSucces={editProfileSucces}
+                goToEditMode={() => {
+                  setEditMode(true);
+                }}
                 profile={profile}
                 isOwner={isOwner}
               />
@@ -84,14 +88,10 @@ const ProfileInfo = ({
   );
 };
 
-const ProfileData = ({ profile, isOwner, editProfileSucces }) => {
+const ProfileData = ({ profile, isOwner, goToEditMode }) => {
   return (
     <div>
-      {isOwner ? (
-        <></>
-      ) : (
-        <button onClick={editProfileSucces(true)}>edit</button>
-      )}
+      {isOwner ? <></> : <button onClick={goToEditMode}>edit</button>}
       <div>
         <b>Full name</b>: {profile.fullName}
       </div>

@@ -11,8 +11,7 @@ const Profile = ({
   updateStatus,
   savePhoto,
   saveProfile,
-  editProfile,
-  editProfileSucces,
+  isEditProfile,
 }) => {
   if (!profile) {
     return <Preloader />;
@@ -26,8 +25,7 @@ const Profile = ({
         updateStatus={updateStatus}
         savePhoto={savePhoto}
         saveProfile={saveProfile}
-        editProfile={editProfile}
-        editProfileSucces={editProfileSucces}
+        isEditProfile={isEditProfile}
       />
       <MyPostsContainer />
     </div>

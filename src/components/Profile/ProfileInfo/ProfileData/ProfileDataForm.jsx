@@ -14,6 +14,7 @@ const ProfileDataForm = ({ profile, handleSubmit, error }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
+        {" "}
         <button>save</button>
       </div>
       <div>

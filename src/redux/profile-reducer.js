@@ -8,7 +8,6 @@ const SET_STATUS = "SET_STATUS";
 const UPDATE_USER_STATUS = "UPDATE_USER_STATUS";
 const DELETE_POST = "DELETE_POST";
 const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
-const EDIT_PROFILE_SUCCESS = " EDIT_PROFILE_SUCCESS";
 
 let initialState = {
   posts: [
@@ -20,8 +19,7 @@ let initialState = {
   ],
   newPostText: "it-camasutra",
   profile: null,
-  editProfile: false,
-  status: "",
+  isEditProfile: false,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -70,11 +68,6 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         status: action.status,
       };
-    case EDIT_PROFILE_SUCCESS:
-      return {
-        ...state,
-        editProfile: action.value,
-      };
 
     default:
       return state;
@@ -106,12 +99,6 @@ export const deletePost = (postId) => ({
 export const savePhotoSuccess = (photos) => ({
   type: SAVE_PHOTO_SUCCESS,
   photos,
-});
-
-//EDIT MODE
-export const editProfileSucces = (editProfile) => ({
-  type: EDIT_PROFILE_SUCCESS,
-  editProfile,
 });
 
 ///GET
@@ -169,7 +156,6 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
   console.log(response);
   if (response.data.resultCode === 0) {
     dispatch(getUserProfile(userId));
-    editProfileSucces(false);
   } else {
     //dispatch(stopSubmit("edit-profile", { _error: response.data.messages[0] }));
 
