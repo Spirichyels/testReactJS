@@ -8,6 +8,7 @@ const SET_STATUS = "SET_STATUS";
 const UPDATE_USER_STATUS = "UPDATE_USER_STATUS";
 const DELETE_POST = "DELETE_POST";
 const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
+const TOGGLE_IS_EDIT_PROFILE = "TOGGLE_IS_EDIT_PROFILE";
 
 let initialState = {
   posts: [
@@ -46,7 +47,6 @@ const profileReducer = (state = initialState, action) => {
         posts: state.posts.filter((p) => p.id !== action.postId),
       };
     case SAVE_PHOTO_SUCCESS:
-      debugger;
       return {
         ...state,
         profile: { ...state.profile, photos: action.photos },
@@ -68,6 +68,10 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         status: action.status,
       };
+
+    case TOGGLE_IS_EDIT_PROFILE: {
+      return { ...state, isEditProfile: action.isEditProfile };
+    }
 
     default:
       return state;
@@ -113,6 +117,12 @@ export const updateUserStatus = (status) => ({
   status,
 });
 
+//
+export const toggleIsEditProfile = (isEditProfile) => ({
+  type: TOGGLE_IS_EDIT_PROFILE,
+  isEditProfile,
+});
+
 ///////////////////////////////////////////////////////////////////
 //dispatch GET
 export const getUserProfile = (userId) => async (dispatch) => {
@@ -149,6 +159,14 @@ export const savePhoto = (file) => async (dispatch) => {
   }
 };
 
+// export const goToEditMode = () => {
+//   toggleIsEditProfile(true);
+// };
+
+export const goToEditMode = () => async (dispatch) => {
+  dispatch(toggleIsEditProfile(true));
+};
+
 export const saveProfile = (profile) => async (dispatch, getState) => {
   //debugger;
   const userId = getState().auth.userId;
@@ -156,15 +174,15 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
   console.log(response);
   if (response.data.resultCode === 0) {
     dispatch(getUserProfile(userId));
+    dispatch(toggleIsEditProfile(false));
   } else {
     //dispatch(stopSubmit("edit-profile", { _error: response.data.messages[0] }));
-
+    debugger;
     dispatch(
       stopSubmit("edit-profile", {
         contacts: { facebook: response.data.messages[0] },
       })
     );
-    //editProfile(true);
   }
 };
 

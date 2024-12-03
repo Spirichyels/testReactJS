@@ -12,6 +12,7 @@ const Profile = ({
   savePhoto,
   saveProfile,
   isEditProfile,
+  goToEditMode,
 }) => {
   if (!profile) {
     return <Preloader />;
@@ -26,6 +27,7 @@ const Profile = ({
         savePhoto={savePhoto}
         saveProfile={saveProfile}
         isEditProfile={isEditProfile}
+        goToEditMode={goToEditMode}
       />
       <MyPostsContainer />
     </div>

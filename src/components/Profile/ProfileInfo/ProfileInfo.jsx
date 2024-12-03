@@ -5,6 +5,7 @@ import Preloader from "../../common/Preloader/Preloader";
 import defaultAvatarka from "../../../assets/images/avatarka.webp";
 import ProfileStatusWIthHooks from "./ProfileStatusWIthHooks";
 import ProfileDataFormFromRedux from "./ProfileData/ProfileDataForm";
+import { toggleIsEditProfile } from "../../../redux/profile-reducer";
 
 const ProfileInfo = ({
   profile,
@@ -13,19 +14,14 @@ const ProfileInfo = ({
   isOwner,
   savePhoto,
   saveProfile,
-  editProfile,
+  isEditProfile,
+  goToEditMode,
 }) => {
-  let [editMode, setEditMode] = useState(false);
+  //let [editMode, setEditMode] = useState(isEditProfile);
 
   if (!profile) {
     return <Preloader />;
   }
-
-  //   const test = () => {
-  //     let x = !editMode;
-  //     setEditMode(x);
-  //     console.log(x);
-  //   };
 
   const mainPhotoSelectedOn = (e) => {
     if (e.target.files.length) {
@@ -36,7 +32,7 @@ const ProfileInfo = ({
   const onSubmit = (formData) => {
     debugger;
     saveProfile(formData).then(() => {
-      if (saveProfile) setEditMode(false);
+      //isEditProfile = true;
     });
   };
 
@@ -66,7 +62,7 @@ const ProfileInfo = ({
                 updateStatus={updateStatus}
               />
             </div>
-            {editMode ? (
+            {isEditProfile ? (
               <ProfileDataFormFromRedux
                 initialValues={profile}
                 profile={profile}
@@ -74,9 +70,7 @@ const ProfileInfo = ({
               />
             ) : (
               <ProfileData
-                goToEditMode={() => {
-                  setEditMode(true);
-                }}
+                goToEditMode={goToEditMode}
                 profile={profile}
                 isOwner={isOwner}
               />

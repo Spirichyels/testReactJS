@@ -8,6 +8,7 @@ import {
   getStatus,
   savePhoto,
   saveProfile,
+  goToEditMode,
 } from "../../redux/profile-reducer";
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { withAuthRedirect } from "../hoc/withAuthRedirect";
@@ -51,6 +52,7 @@ class ProfileContainer extends React.Component {
         savePhoto={this.props.savePhoto}
         saveProfile={this.props.saveProfile}
         isEditProfile={this.props.isEditProfile}
+        goToEditMode={this.props.goToEditMode}
       />
     );
   }
@@ -61,7 +63,7 @@ let mapStateToProps = (state) => ({
   status: state.profilePage.status,
   authorizedUserId: state.auth.userId,
   isAuth: state.auth.isAuth,
-  isEditProfile: state.profilePage,
+  isEditProfile: state.profilePage.isEditProfile,
 });
 
 export default compose(
@@ -71,6 +73,7 @@ export default compose(
     updateStatus,
     savePhoto,
     saveProfile,
+    goToEditMode,
   }),
   withRouter,
   withAuthRedirect
