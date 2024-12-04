@@ -167,46 +167,34 @@ export const goToEditMode = () => async (dispatch) => {
   dispatch(toggleIsEditProfile(true));
 };
 
-export const saveProfile = (profile) => async (dispatch, getState) => {
+const getErrorsFromMessages = (messages) => {
   //debugger;
+  let errors = Object.keys(messages).reduce((acc, key) => {
+    let errorMessage = messages[key].split("->");
+    errorMessage = errorMessage[1]
+      .slice(0, errorMessage[1].length - 1)
+      .toLowerCase();
+    return { ...acc, [errorMessage]: messages[key] };
+  }, {});
+
+  return errors;
+};
+
+export const saveProfile = (profile) => async (dispatch, getState) => {
+  debugger;
   const userId = getState().auth.userId;
   let response = await profileAPI.saveProfile(profile);
   console.log(response);
   if (response.data.resultCode === 0) {
     dispatch(getUserProfile(userId));
-    dispatch(toggleIsEditProfile(false));
+    dispatch(toggleIsEditProfile(false)); //выключает редактор профиля если нет ошибок
   } else {
-    //dispatch(stopSubmit("edit-profile", { _error: response.data.messages[0] }));
-    debugger;
-    dispatch(
-      stopSubmit("edit-profile", {
-        contacts: { facebook: response.data.messages[0] },
-      })
-    );
+    const action = stopSubmit("edit-profile", {
+      contacts: getErrorsFromMessages(response.data.messages),
+    });
+
+    dispatch(action);
   }
 };
 
 export default profileReducer;
-
-// const getErrorsFromMessages = (messages) => {
-// 	let errors = Object.keys(messages).reduce((acc, key) => {
-// 	  let errorMessage = messages[key].split("->");
-// 	  errorMessage = errorMessage[1]
-// 		.slice(0, errorMessage[1].length - 1)
-// 		.toLowerCase();
-// 	  return { ...acc, [errorMessage]: messages[key] };
-// 	}, {});
-
-// 	return errors;
-//   };
-
-//   export const saveChangedProfile = (formData) => async (dispatch) => {
-// 	let data = await profileAPI.saveChangedProfile(formData);
-// 	if (data.resultCode === 0) {
-// 	  dispatch(getUserProfile(formData.userId))
-// 	} else {
-// 	  dispatch(stopSubmit(<имя формы>, { contacts: getErrorsFromMessages(data.messages)}));
-// 	}
-//   };
-
-//   *для тех кто не

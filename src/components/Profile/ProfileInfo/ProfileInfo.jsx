@@ -30,10 +30,8 @@ const ProfileInfo = ({
   };
 
   const onSubmit = (formData) => {
-    debugger;
-    saveProfile(formData).then(() => {
-      //isEditProfile = true;
-    });
+    //debugger;
+    saveProfile(formData).then(() => {});
   };
 
   return (
