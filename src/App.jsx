@@ -2,7 +2,7 @@ import { Route } from "react-router-dom";
 import { Component, Suspense } from "react";
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+import { Switch, withRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { compose } from "redux";
 
 import "./App.css";
@@ -48,14 +48,17 @@ class App extends Component {
         <HeaderContainer />
         <Navbar />
         <div className="app-wrapper-content">
-          <Route
-            path="/profile/:userId?"
-            render={withSuspense(ProfileContainer)}
-          />
+          <Switch>
+            <Route
+              path="/profile/:userId?"
+              render={withSuspense(ProfileContainer)}
+            />
 
-          <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
-          <Route path="/users" render={() => <UsersContainer />} />
-          <Route path="/login" render={() => <LoginPage />} />
+            <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
+            <Route path="/users" render={() => <UsersContainer />} />
+            <Route path="/login" render={() => <LoginPage />} />
+            <Route path="*" render={() => <div>404 NOT FOUND</div>} />
+          </Switch>
         </div>
       </div>
     );
