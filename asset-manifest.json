@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/testReactJS/static/css/main.b0324816.css",
-    "main.js": "/testReactJS/static/js/main.29358f47.js",
+    "main.js": "/testReactJS/static/js/main.f362a795.js",
     "static/css/840.73c04473.chunk.css": "/testReactJS/static/css/840.73c04473.chunk.css",
     "static/js/840.361587e6.chunk.js": "/testReactJS/static/js/840.361587e6.chunk.js",
     "static/css/934.9109ed8c.chunk.css": "/testReactJS/static/css/934.9109ed8c.chunk.css",
@@ -11,7 +11,7 @@
     "static/media/loading.svg": "/testReactJS/static/media/loading.1d8958e3da5062737f71644b6b2c76d1.svg",
     "index.html": "/testReactJS/index.html",
     "main.b0324816.css.map": "/testReactJS/static/css/main.b0324816.css.map",
-    "main.29358f47.js.map": "/testReactJS/static/js/main.29358f47.js.map",
+    "main.f362a795.js.map": "/testReactJS/static/js/main.f362a795.js.map",
     "840.73c04473.chunk.css.map": "/testReactJS/static/css/840.73c04473.chunk.css.map",
     "840.361587e6.chunk.js.map": "/testReactJS/static/js/840.361587e6.chunk.js.map",
     "934.9109ed8c.chunk.css.map": "/testReactJS/static/css/934.9109ed8c.chunk.css.map",
@@ -19,6 +19,6 @@
   },
   "entrypoints": [
     "static/css/main.b0324816.css",
-    "static/js/main.29358f47.js"
+    "static/js/main.f362a795.js"
   ]
 }
