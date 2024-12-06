@@ -2,7 +2,11 @@ import { Route } from "react-router-dom";
 import { Component, Suspense } from "react";
 import React from "react";
 import { connect } from "react-redux";
-import { Switch, withRouter } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  Redirect,
+  Switch,
+  withRouter,
+} from "react-router-dom/cjs/react-router-dom.min";
 import { compose } from "redux";
 
 import "./App.css";
@@ -57,6 +61,7 @@ class App extends Component {
             <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
             <Route path="/users" render={() => <UsersContainer />} />
             <Route path="/login" render={() => <LoginPage />} />
+            <Redirect from="/" to={"/profile"} />
             <Route path="*" render={() => <div>404 NOT FOUND</div>} />
           </Switch>
         </div>
@@ -74,11 +79,11 @@ let AppContainer = compose(
 
 const SamuraiJsApp = (props) => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
