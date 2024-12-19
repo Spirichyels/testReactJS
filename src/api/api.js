@@ -20,7 +20,7 @@ export const profileAPI = {
   },
 
   updateStatus(status) {
-    debugger;
+    //debugger;
     return instance.put(`profile/status`, { status: status });
   },
   savePhoto(photoFile) {
@@ -43,6 +43,7 @@ export const authAPI = {
     return instance.get(`auth/me`);
   },
   login(email, password, rememberMe = false, captcha = null) {
+    //debugger;
     return instance.post(`auth/login`, {
       email,
       password,

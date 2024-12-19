@@ -32,7 +32,7 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
 
       {captchaUrl && <img src={captchaUrl} />}
       {captchaUrl &&
-        createField("Symbols from image", "captcha", [requred], Input)}
+        createField("Symbols from image", "captcha", [requred], Input, {})}
 
       {error && <div className={styles.formControlSummaryError}>{error}</div>}
       <div>
@@ -49,7 +49,7 @@ const LoginReduxForm = reduxForm({
 
 const Login = (props) => {
   const onSubmit = (formData) => {
-    debugger;
+    //debugger;
     props.login(
       formData.email,
       formData.password,
